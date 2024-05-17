@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request, redirect, session
+import requests
 from flask_cors import CORS, cross_origin
 from pymongo import MongoClient
 import re
@@ -9,9 +10,6 @@ import bcrypt
 from vonage import Client, Sms
 from translate import translations
 from datetime import datetime
-
-
-
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -140,6 +138,18 @@ def signin():
         }
                     }), 200
 
+@app.route('/api/detection', methods=['POST'])
+def detection():
+    # Check if the request contains an image file
+    if 'image' not in request.files:
+        return jsonify({'error': 'No image file provided'}), 400
+    
+    # Get the image file from the request
+    image_file = request.files['image']
+    
+    response=requests.get(f"https://api.qrserver.com/v1/read-qr-code/?fileurl={image_file}")
+    
+    return jsonify({'response': response})
 
 if __name__ == '__main__':
     app.secret_key = 'your_secret_key' 
