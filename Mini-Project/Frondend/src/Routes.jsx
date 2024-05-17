@@ -6,6 +6,7 @@ import ImageUpload from "./pages/ImageUpload";
 import Login from "./pages/login";
 import ParkOPT from "./pages/parkOPT";
 import QRImageUpload from "./pages/QRImageUpload";
+import SearchPlace from "./pages/SearchPlace";
 import Signup from "./pages/Signup";
 
 const router = createBrowserRouter([
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
                 path: '/parkOPT',
                 element: <ParkOPT />
             },
+            {
+                path: '/Search',
+                element: <SearchPlace />
+            }
 
         ]
     },

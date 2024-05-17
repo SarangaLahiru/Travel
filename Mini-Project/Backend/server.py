@@ -45,21 +45,6 @@ def validate_password(password):
     
     return True  # Password is valid
     
-    
-def extract_name_and_mobile(ocr_text):
-    # Define the regular expression patterns for extracting name and mobile number
-    name_pattern = re.compile(r'Name:\s*(.*)', re.IGNORECASE)
-    mobile_pattern = re.compile(r'No::\s*(.*)', re.IGNORECASE)
-    
-    # Search for the patterns in the OCR text
-    name_match = name_pattern.search(ocr_text)
-    mobile_match = mobile_pattern.search(ocr_text)
-    
-    # Extract the name and mobile number if found
-    name = name_match.group(1).strip() if name_match else None
-    mobile = mobile_match.group(1).strip() if mobile_match else None
-    
-    return name, mobile
 
 
 @app.route('/api/signup', methods=['POST'])
@@ -136,7 +121,7 @@ def signin():
         }
                     }), 200
 
-@app.route('/api/detection', methods=['POST'])
+@app.route('/api/detection', methods=['POST','GET'])
 def detection():
     # Check if the request contains an image file
     if 'image' not in request.files:
