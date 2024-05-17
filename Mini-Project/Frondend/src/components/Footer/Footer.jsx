@@ -68,7 +68,7 @@ const Footer = () => {
             </div>
 
             <div className="bottomSection">
-                <h3>AgroPluse © 2024 All Right Reserved</h3>
+                <h3>Travelo © 2024 All Right Reserved</h3>
             </div>
 
         </section>

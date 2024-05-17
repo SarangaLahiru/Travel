@@ -8,14 +8,14 @@ import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import axioaClient from '../axios-Client';
 import { useStateContext } from '../context/contextProvider';
-import './PestImageUpload.css';
+import './QRImageUpload.css';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
 
-export default function PestImageUpload() {
+export default function QRImageUpload() {
     const [file, setFile] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
     const [captureimageUrl, setCaptureimageUrl] = useState(null);
@@ -122,32 +122,11 @@ export default function PestImageUpload() {
             .then(response => {
 
                 console.log('Detection result:', response.data);
-                // Handle detection result if needed
-                setPest(response.data.result)
-                const details = response.data.details
-                    .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') // Replace **text** with bold text
-                    .replace(/\*/g, '<br><br>');
-                const solution1 = response.data.solution1
-                    .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') // Replace **text** with bold text
-                    .replace(/\*/g, '<br><br>');
-                const solution2 = response.data.solution2
-                    .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') // Replace **text** with bold text
-                    .replace(/\*/g, '<br><br>');
-                const solution3 = response.data.solution3
-                    .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') // Replace **text** with bold text
-                    .replace(/\*/g, '<br><br>');
-                setDetails(details)
-                setSolution1(solution1)
-                setSolution2(solution2)
-                setSolution3(solution3)
-
-
                 const prediction = response.data.result;
 
                 Swal.fire({
                     title: prediction,
                     icon: "info",
-                    text: "This is your pest name",
                     showCancelButton: true,
                     confirmButtonText: "See more Details",
                     customClass: {
@@ -305,7 +284,7 @@ export default function PestImageUpload() {
                                 <img className='img -z-10 m-auto max-sm:p-5 2xl:scale-110 2xl:mt-8' width="1280px" src="./Images/IMG_5388.PNG" alt="" />
                             )}
                                 <div className="dis w-full m-auto z-40 absolute max-sm:top-12 max-md:top-32 max-lg:top-40 max-xl:top-56 2xl:top-52 max-2xl:top-72">
-                                    <h2 className='name m-auto w-fit text-2xl max-sm:p-6 p-10 text-orange-400'>{file ? file.name : "Drag or upload an image"}</h2>
+                                    <h2 className='name m-auto w-fit text-2xl max-sm:p-6 p-10 text-blacks' style={{ position: "relative", top: "230px", fontSize: "35px" }}>{file ? file.name : "Drag or upload an image"}</h2>
                                     <img className='upload m-auto max-sm:-mt-4 max-sm:w-14 max-md:w-20 max-lg:w-24 max-xl:28' src="./images/Group 6.png" alt="" />
                                 </div>
                             </label>

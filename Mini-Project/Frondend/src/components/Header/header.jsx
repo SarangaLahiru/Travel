@@ -8,7 +8,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import axios from 'axios';
 import * as React from 'react';
 import FadeIn from 'react-fade-in';
 import { IoCall, IoDocumentText, IoDownload, IoHelpCircleOutline, IoHome, IoInformationCircleOutline, IoLanguage, IoSettings } from "react-icons/io5";
@@ -27,31 +26,11 @@ export default function Header() {
   const { setToken, setUser, user } = useStateContext();
   const location = useLocation();
   // const [translations, setTranslations] = React.useState({});
-  const { setTranslations, translations } = useStateContext();
 
 
-  // Fetch translations when the component mounts or language changes
-  React.useEffect(() => {
-    fetchTranslations();
-  }, [selectedLanguage]);
 
-  const fetchTranslations = () => {
-    axios.get(`http://localhost:5000/get-translations`, { params: { language: selectedLanguage } })
-      .then(response => {
-        // Handle the response to update translations
-        setTranslations(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching translations:', error);
-      });
-  };
 
-  // Function to handle language change
-  const handleLanguageChange = (event) => {
-    const newLanguage = event.target.value;
-    setSelectedLanguage(newLanguage);
-    setOpen(false); // Close language selection dialog
-  };
+
 
   const isMenuOpen = Boolean(anchorEl);
   const handleMenuClose = () => {
@@ -222,16 +201,16 @@ export default function Header() {
           <h2 className=''> <img style={{ marginTop: "-15px" }} src="/Images/logo.jpg" alt="logo" width="150px" height="103px" /> </h2>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8  box">
             <li className={location.pathname === '/' ? 'selected' : ''}>
-              <Link to='/'><Button variant="text" color="success" >{translations.home}</Button></Link>
+              <Link to='/'><Button variant="text" color="success" >home</Button></Link>
             </li>
             <li className={location.pathname === '/detection' ? 'selected' : ''}>
-              <Link to='/detection'><Button variant="text">{translations.detection}</Button></Link>
+              <Link to='/detection'><Button variant="text">QR Code</Button></Link>
             </li>
             <li className={selectedNavItem === 'support' ? 'selected' : ''}>
-              <Button variant="text" onClick={() => handleNavItemClick('support')}>{translations.support}</Button>
+              <Button variant="text" onClick={() => handleNavItemClick('support')}>Support</Button>
             </li>
             <li className={selectedNavItem === 'about' ? 'selected' : ''}>
-              <Button variant="text" onClick={() => handleNavItemClick('about')}>{translations.about}</Button>
+              <Button variant="text" onClick={() => handleNavItemClick('about')}>About</Button>
             </li>
 
             <li className='m-1 userIcon'>

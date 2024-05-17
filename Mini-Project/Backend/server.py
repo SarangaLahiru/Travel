@@ -7,8 +7,6 @@ from PIL import Image
 import re
 import bcrypt
 from vonage import Client, Sms
-from translate import translations
-from datetime import datetime
 
 
 
