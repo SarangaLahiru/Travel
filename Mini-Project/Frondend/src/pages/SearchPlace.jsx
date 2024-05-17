@@ -18,7 +18,7 @@ const SearchPlace = () => {
         axioaClient.post('/search', { location: searchQuery })
 
             .then(response => {
-                console.log('Search results:', response.data);
+                console.log('Search results:', response);
                 // Handle the response data as needed
             })
             .catch(error => {
