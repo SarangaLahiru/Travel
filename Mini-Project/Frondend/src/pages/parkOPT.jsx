@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './parkOPT.css';
 
 const ParkOPT = () => {
@@ -25,7 +26,7 @@ const ParkOPT = () => {
                     <input type="text" id="startTime" className="time-input" placeholder="HH:MM:SS" />
 
                 </div>
-                <button className="orange-button">Check Availability</button>
+                <button className="orange-button"><Link to="/parkOPT">Check Avalibility</Link></button>
             </div>
             <h1>
                 Select Your Vehicle

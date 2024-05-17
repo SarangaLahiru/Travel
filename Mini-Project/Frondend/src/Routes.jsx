@@ -2,9 +2,9 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import Default from "./layout/Default";
 import Guest from "./layout/Guest";
 import Home from "./pages/home";
-import ImageUpload from "./pages/ImageUpload";
 import Login from "./pages/login";
 import ParkOPT from "./pages/parkOPT";
+import PaymentForm from "./pages/Payment";
 import QRImageUpload from "./pages/QRImageUpload";
 import SearchPlace from "./pages/SearchPlace";
 import Signup from "./pages/Signup";
@@ -37,6 +37,10 @@ const router = createBrowserRouter([
             {
                 path: '/Search',
                 element: <SearchPlace />
+            },
+            {
+                path: '/pay',
+                element: <PaymentForm />
             }
 
         ]
@@ -53,10 +57,7 @@ const router = createBrowserRouter([
                 path: '/signup',
                 element: <Signup />
             },
-            {
-                path: '/image',
-                element: < ImageUpload />
-            },
+
 
         ]
     }

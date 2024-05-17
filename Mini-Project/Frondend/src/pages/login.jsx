@@ -50,7 +50,7 @@ export default function Login() {
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
               className="mx-auto"
-              src="/images/log.jpeg"
+              src="./Images/logo.jpg"
               alt="Your Company"
               width="180px"
             />

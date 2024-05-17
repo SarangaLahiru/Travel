@@ -1,0 +1,80 @@
+.payment-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-family: Poppins;
+    font-weight: bold;
+}
+
+.card-types {
+    display: flex;
+    gap: 20px;
+}
+
+.card-logo {
+    width: 50px;
+    height: auto;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: Poppins;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.expire-date {
+    display: flex;
+    gap: 10px;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+
+    font-family: Poppins;
+    color: white;
+    background-color: orange;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+h1 {
+    text-align: Center;
+    padding-top: 70px;
+    padding-left: 40px;
+    font-family: Inter;
+    font-weight: bold;
+    font-size: 70px;
+    color: #0f0f0f;
+}
+
+h2 {
+    text-align: left;
+    padding-top: 20px;
+    font-family: Inter;
+    font-weight: bold;
+    font-size: 20px;
+    color: #0f0f0f;
+}

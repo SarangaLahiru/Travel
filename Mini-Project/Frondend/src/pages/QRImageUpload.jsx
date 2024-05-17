@@ -117,33 +117,7 @@ export default function QRImageUpload() {
             formData.append('image', blob, 'snapshot.png');
         }
 
-        axioaClient.post('/detection', formData)
-
-            .then(response => {
-
-                console.log('Detection result:', response.data);
-                const prediction = response.data.result;
-
-                Swal.fire({
-                    title: prediction,
-                    icon: "info",
-                    showCancelButton: true,
-                    confirmButtonText: "See more Details",
-                    customClass: {
-                        container: 'my-custom-modal-class'   // Custom class for the deny button
-                    }
-                }).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                        setOpenBox(true)
-                    } else if (result.isDenied) {
-                        Swal.fire("Changes are not saved", "", "info");
-                    }
-                });
-            })
-            .catch(error => {
-                console.error('Error uploading image:', error);
-            });
+        window.location.href = '/parkOPT';
     };
 
     const handleBack = () => {
