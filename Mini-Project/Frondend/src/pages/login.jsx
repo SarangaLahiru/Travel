@@ -1,19 +1,19 @@
 
+import { Grid, TextField } from '@mui/material';
 import Button from '@mui/material/Button';
-import { TextField, Grid, Typography, Container } from '@mui/material';
-import './login.css';
-import { ToastContainer, toast } from 'react-toastify';
-import FadeIn from 'react-fade-in';
 import { createRef } from 'react';
+import FadeIn from 'react-fade-in';
+import { toast } from 'react-toastify';
 import axioaClient from '../axios-Client';
 import { useStateContext } from '../context/contextProvider';
+import './login.css';
 
 export default function Login() {
 
   const idRef = createRef();
   const passwordRef = createRef();
   const { setToken, setUser } = useStateContext();
-  
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
 
@@ -50,7 +50,7 @@ export default function Login() {
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
               className="mx-auto"
-              src="/images/logo.jpeg"
+              src="/images/log.jpeg"
               alt="Your Company"
               width="180px"
             />
@@ -104,9 +104,9 @@ export default function Login() {
               </FadeIn>
             </form>
 
-            <p className="mt-10 text-center text-sm text-gray-500">
+            <p className="mt-10 text-center text-sm text-orange-500">
               If you not a member?{' '}
-              <a href="/signup" className="font-semibold leading-6 text-green-600 hover:text-green-500">
+              <a href="/signup" className="font-semibold leading-6 text-orange-600 hover:text-orange-500">
                 Sign up
               </a>
             </p>

@@ -1,15 +1,13 @@
+import { Grid, TextField } from '@mui/material';
 import Button from '@mui/material/Button';
-import { TextField, Grid } from '@mui/material';
-import './login.css';
+import { createRef } from 'react';
 import FadeIn from 'react-fade-in';
-import { createRef, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import axiosClient from '../axios-Client'; // Assuming you have an axios client configured
 import { useStateContext } from '../context/contextProvider';
+import './login.css';
 // import { GoogleLogin } from '@react-oauth/google';
 import { GoogleLogin } from 'react-google-login';
-import axioaClient from '../axios-Client';
-import { jwtDecode } from "jwt-decode";
 
 
 
@@ -19,7 +17,7 @@ export default function Signup() {
   const emailRef = createRef();
   const passwordRef = createRef();
   const confirmPasswordRef = createRef();
-  const {setToken,setUser}=useStateContext();
+  const { setToken, setUser } = useStateContext();
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -41,22 +39,22 @@ export default function Signup() {
         setUser(response.data.user)
         setToken(123)
 
-        
+
       })
       .catch(error => {
         console.log(error.response.data.error); // Handle error
         console.log("dsdfsdf")
         toast.error(error.response.data.error)
-        
+
       });
   };
   const handleGoogleSuccess = (response) => {
     const token = response.tokenId;
-     console.log('Token:', token);
+    console.log('Token:', token);
   };
 
-  
-  
+
+
 
   return (
     <>
@@ -65,7 +63,7 @@ export default function Signup() {
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
               className="mx-auto"
-              src="/images/logo.jpeg"
+              src="/images/log.jpeg"
               alt="Your Company"
               width="180px"
             />
@@ -135,9 +133,9 @@ export default function Signup() {
                 <div>
                   <Button
                     type='submit'
-                    sx={{ color:"white",padding: "12px 18px",bgcolor:"#014802" }}
+                    sx={{ color: "white", padding: "12px 18px", bgcolor: "#014802" }}
                     id="loginbtn"
-                    className="loginbtn flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 loginbtn"
+                    className="loginbtn flex w-full justify-center rounded-md bg-orange-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 loginbtn"
                   >
                     Sign up
                   </Button>
@@ -145,16 +143,16 @@ export default function Signup() {
               </FadeIn>
             </form>
             <div className='mt-2 ml-4'>
-            <GoogleLogin
-      clientId="796659410119-6p76ghbvl4tmcpmngk1v97u8h0n2g6d0.apps.googleusercontent.com"
-      onSuccess={handleGoogleSuccess}
-      cookiePolicy={'single_host_origin'}
-    />
+              <GoogleLogin
+                clientId="796659410119-6p76ghbvl4tmcpmngk1v97u8h0n2g6d0.apps.googleusercontent.com"
+                onSuccess={handleGoogleSuccess}
+                cookiePolicy={'single_host_origin'}
+              />
             </div>
 
             <p className="mt-5 text-center text-sm text-gray-500">
               If you already have an account?{' '}
-              <a href="/login" className="font-semibold leading-6 text-green-600 hover:text-green-500">
+              <a href="/login" className="font-semibold leading-6 text-orange-600 hover:text-orange-500">
                 Sign in
               </a>
             </p>
@@ -162,7 +160,7 @@ export default function Signup() {
         </div>
       </FadeIn>
 
-      
+
     </>
   );
 }

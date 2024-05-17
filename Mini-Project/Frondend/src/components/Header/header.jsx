@@ -1,26 +1,18 @@
-import { Avatar, IconButton, Menu, MenuItem, Slide, Stack } from '@mui/material';
+import { Avatar, IconButton, Menu, MenuItem, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import Select from '@mui/material/Select';
 import axios from 'axios';
 import * as React from 'react';
 import FadeIn from 'react-fade-in';
 import { IoCall, IoDocumentText, IoDownload, IoHelpCircleOutline, IoHome, IoInformationCircleOutline, IoLanguage, IoSettings } from "react-icons/io5";
 import { RiMenu2Fill } from "react-icons/ri";
-import { TiArrowSortedDown } from "react-icons/ti";
 import { Link, useLocation } from 'react-router-dom';
 import { useStateContext } from '../../context/contextProvider';
 import './header.css';
@@ -226,8 +218,8 @@ export default function Header() {
     <div>
       <FadeIn>
 
-        <header className=''>
-          <h2 className=''> <img src="/images/logo.jpeg" alt="logo" width="219px" height="103px" /> </h2>
+        <header className='' style={{ overflow: "hidden" }}>
+          <h2 className=''> <img style={{ marginTop: "-15px" }} src="/Images/logo.jpg" alt="logo" width="150px" height="103px" /> </h2>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8  box">
             <li className={location.pathname === '/' ? 'selected' : ''}>
               <Link to='/'><Button variant="text" color="success" >{translations.home}</Button></Link>
@@ -241,41 +233,7 @@ export default function Header() {
             <li className={selectedNavItem === 'about' ? 'selected' : ''}>
               <Button variant="text" onClick={() => handleNavItemClick('about')}>{translations.about}</Button>
             </li>
-            <li>
-              <Button variant="contained" className="lang" onClick={handleLanguageButtonClick}>
-                {selectedLanguage} <TiArrowSortedDown className="langIcon" />
-              </Button>
-              <Dialog
-                open={open}
-                onClose={handleClose}
-                className="langBox"
-                sx={{ color: '#014802' }}
-                TransitionComponent={Slide}
-              >
-                <DialogTitle sx={{ bgcolor: "#014802", color: "white" }}>Select Language</DialogTitle>
-                <DialogContent sx={{ color: '#014802', }}>
-                  <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap', padding: "10px 20px" }}>
-                    <FormControl sx={{ m: 1, minWidth: 120 }} color='success'>
-                      <InputLabel sx={{ color: '#014802' }} color='success'>Language</InputLabel>
-                      <Select
 
-                        native
-                        value={selectedLanguage}
-                        onChange={handleLanguageChange}
-                        color='success'
-                        input={<OutlinedInput label="Language" id="language-select" />}
-                        sx={{ color: '#014802', width: "300px", }}
-                      >
-                        <option value="" disabled>Select a language</option>
-                        <option value="English" sx={{ color: '#014802', bgcolor: 'red' }}>English</option>
-                        <option value="">Tamil</option>
-                        <option value="සිංහල">සිංහල</option>
-                      </Select>
-                    </FormControl>
-                  </Box>
-                </DialogContent>
-              </Dialog>
-            </li>
             <li className='m-1 userIcon'>
               <IconButton
                 size="large"
@@ -289,7 +247,7 @@ export default function Header() {
                 {/* <AccountCircle sx={{ color: '#014802', fontSize:'50px'}}/> */}
                 <Stack direction="row" spacing={1}>
                   <Avatar
-                    sx={{ width: 56, height: 56, backgroundColor: "green" }}
+                    sx={{ width: 56, height: 56, backgroundColor: "orange" }}
 
 
 

@@ -20,22 +20,22 @@ const Footer = () => {
                 {/*Group One - Our Services*/}
                 <div className="linkGroup" data-aos='fade-up' data-aos-duration='000'>
                     <span className="groupTitle">
-                        Our Services
+
                     </span>
 
                     <li className="footerList flex">
                         <FiChevronRight className='icon' />
-                        Pest Detecion
+                        Digital Pass
                     </li>
 
                     <li className="footerList flex">
                         <FiChevronRight className='icon' />
-                        Solutions
+                        Location Tracking
                     </li>
 
                     <li className="footerList flex">
                         <FiChevronRight className='icon' />
-                        Community
+                        Cashless Payments
                     </li>
                 </div>
 
@@ -58,7 +58,7 @@ const Footer = () => {
 
                     <li className="footerList flex">
                         <MdEmail className='cont-icon' />
-                        pest.management@agro.hayleys.com
+                        smart.travel.management@agro.hayleys.com
                     </li>
                 </div>
 

@@ -1,11 +1,6 @@
 import { UploadFile } from '@mui/icons-material';
-import CloseIcon from '@mui/icons-material/Close';
-import { Box, Button, CardActions, CardContent, CardMedia, Dialog, Typography } from '@mui/material';
-import AppBar from '@mui/material/AppBar';
-import IconButton from '@mui/material/IconButton';
+import { Button, Dialog } from '@mui/material';
 import Slide from '@mui/material/Slide';
-import Toolbar from '@mui/material/Toolbar';
-import { Card } from 'flowbite-react';
 import React, { useRef, useState } from 'react';
 import FadeIn from 'react-fade-in';
 import { FourSquare } from 'react-loading-indicators';
@@ -298,8 +293,8 @@ export default function PestImageUpload() {
                     <div className='mt-20'>
                         <FadeIn>
                             <div className="box mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 ml-5 mt-10 text-3xl">
-                                <h2 className='sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-3xl max-sm:text-xl' >{translations.detection_p1}</h2>
-                                <h1 className='sm:text-4xl md:text-4xl lg:text-6xl xl:text-6xl 2xl:text-6xl max-sm:text-4xl'>{translations.detection_p2}</h1>
+                                <h2 className='sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-3xl max-sm:text-xl' >Enter your proper QR Code</h2>
+                                <h1 className='sm:text-4xl md:text-4xl lg:text-6xl xl:text-6xl 2xl:text-6xl max-sm:text-4xl'>QR Code</h1>
                             </div>
                         </FadeIn>
 
@@ -307,22 +302,24 @@ export default function PestImageUpload() {
                             <label htmlFor="fileUpload" className="file-upload">{imageUrl ? (
                                 <img className='img -z-10 m-auto max-sm:p-5 2xl:scale-110 2xl:mt-8' width="1280px" src={imageUrl} alt="" />
                             ) : (
-                                <img className='img -z-10 m-auto max-sm:p-5 2xl:scale-110 2xl:mt-8' width="1280px" src="./images/Rectangle 26.png" alt="" />
+                                <img className='img -z-10 m-auto max-sm:p-5 2xl:scale-110 2xl:mt-8' width="1280px" src="./Images/IMG_5388.PNG" alt="" />
                             )}
                                 <div className="dis w-full m-auto z-40 absolute max-sm:top-12 max-md:top-32 max-lg:top-40 max-xl:top-56 2xl:top-52 max-2xl:top-72">
-                                    <h2 className='name m-auto w-fit text-2xl max-sm:p-6 p-10 text-teal-50'>{file ? file.name : translations.detection_t1}</h2>
+                                    <h2 className='name m-auto w-fit text-2xl max-sm:p-6 p-10 text-orange-400'>{file ? file.name : "Drag or upload an image"}</h2>
                                     <img className='upload m-auto max-sm:-mt-4 max-sm:w-14 max-md:w-20 max-lg:w-24 max-xl:28' src="./images/Group 6.png" alt="" />
                                 </div>
                             </label>
                             <input className=' bg-black' type="file" id="fileUpload" style={{ display: "none" }} onChange={handleFileChange} />
 
-                            <div className="btn max-sm:m-5 sm:m-20 flex">
-                                <div className="btn1 cursor-pointer active:scale-75 hover:drop-shadow-xl w-20 rounded-full">
-                                    <img onClick={handleTakePhoto} src="./images/Group 5.png" className='' alt="" />
+                            <div className="btn max-sm:m-5 sm:m-20 flex" style={{ backgroundColor: "orange" }}>
+                                <div className="btn1 cursor-pointer active:scale-75 hover:drop-shadow-xl w-32 rounded-full">
+                                    {/* <img onClick={handleTakePhoto} src="./images/Group 5.png" className='' alt="" /> */}
+                                    <button onClick={handleTakePhoto}>Take Photo</button>
+
                                 </div>
                                 <div className="btn2 absolute max-sm:right-5 sm:right-20 sm:text-xl">
-                                    <button className='sm:m-4 max-sm:m-1 bg-green-800 text-green-50 max-sm:p-3 max-sm:px-6 sm:p-3 sm:px-8 active:scale-75 hover:drop-shadow-xl rounded-full' onClick={handleDetect}>{translations.detection_b1}</button>
-                                    <button className='sm:m-4 max-sm:m-1 bg-green-800 text-green-50 max-sm:p-3 max-sm:px-6 sm:p-3 sm:px-9 active:scale-75 hover:drop-shadow-xl  rounded-full' onClick={handleBack}>{translations.detection_b2}</button>
+                                    <button style={{ backgroundColor: "#fb8500" }} className='sm:m-4 max-sm:m-1  text-green-50 max-sm:p-3 max-sm:px-6 sm:p-3 sm:px-8 active:scale-75 hover:drop-shadow-xl rounded-full' onClick={handleDetect}>Scan QR</button>
+                                    <button style={{ backgroundColor: "#fb8500" }} className='sm:m-4 max-sm:m-1  text-green-50 max-sm:p-3 max-sm:px-6 sm:p-3 sm:px-9 active:scale-75 hover:drop-shadow-xl  rounded-full' onClick={handleBack}>{translations.detection_b2}</button>
                                 </div>
                             </div>
                         </div>
@@ -335,193 +332,7 @@ export default function PestImageUpload() {
 
                     </div>
                 </FadeIn>
-                <React.Fragment>
 
-                    <Dialog
-                        fullScreen
-                        open={openBox}
-                        onClose={handleClose}
-                        TransitionComponent={Transition}
-                    >
-                        <AppBar sx={{ position: 'relative', height: '60px', backgroundColor: "green" }}>
-                            <Toolbar sx={{ position: "absolute", left: "10px" }}>
-                                <IconButton
-                                    edge="start"
-                                    color="inherit"
-                                    onClick={handleClose}
-                                    aria-label="close"
-                                >
-                                    <CloseIcon />
-                                </IconButton>
-
-
-                            </Toolbar>
-                        </AppBar>
-                        <Box>
-                            <h2 data-aos="fade-up" className=' absolute left-20 top-28 text-5xl font-bold'>{pest}</h2>
-                            <div data-aos="fade-up" className="m-10 mt-32 flex flex-wrap">
-                                <div>
-                                    <img src={imageUrl} className='max-sm:m-auto rounded-xl shadow-2xl' width="700px" alt="" />
-                                </div>
-                                <div className="max-sm:m-auto dis w-96 lg:relative -top-24 lg:ml-10 p-10" style={{ width: "700px" }}>
-                                    <h3 className='text-3xl'>Details </h3>
-
-                                    <div className='mt-4' dangerouslySetInnerHTML={{ __html: details }} />
-                                    <Button onClick={() => setOpenBox1(true)} color='success' sx={{ marginTop: "50px", backgroundColor: "green", color: "white" }}>See solutions</Button>
-                                </div>
-                            </div>
-
-                        </Box>
-
-                    </Dialog>
-                </React.Fragment>
-
-                <React.Fragment>
-
-                    <Dialog
-                        fullScreen
-                        open={openBox1}
-                        onClose={handleClose1}
-                        TransitionComponent={Transition}
-                    >
-                        <AppBar sx={{ position: 'relative', height: '60px', backgroundColor: "green" }}>
-                            <Toolbar sx={{ position: "absolute", left: "10px" }}>
-                                <IconButton
-                                    edge="start"
-                                    color="inherit"
-                                    onClick={handleClose1}
-                                    aria-label="close"
-                                >
-                                    <CloseIcon />
-                                </IconButton>
-                                <Typography sx={{ marginLeft: "100px", marginTop: "10px", fontSize: "25px" }}>Pest Controll Solutions</Typography>
-
-
-                            </Toolbar>
-                        </AppBar>
-                        <Box>
-
-                            <div className='h-96 rounded-2xl'>
-                                <img className='m-auto rounded-2xl' src="./images/logo2.png" alt="" />
-                                <div className=' text-center w-1/2 m-auto mt-4'>
-                                    <h2 className='max-sm:text-xl text-3xl font-bold text-zinc-600'>See Environment health solutions</h2>
-                                    <p className='max-sm:text-sm'>Environmentally healthy pest solutions offer eco-conscious methods to manage infestations without harming ecosystems. By utilizing natural deterrents and sustainable practices, these solutions prioritize the health of both the environment and inhabitants.</p>
-                                    <h2 className=' text-lg'>Solutions for {pest}</h2>
-                                    <div className='left-0 flex max-sm:flex-wrap w-full absolute m-auto'>
-                                        <Card sx={{ maxWidth: 345, backgroundColor: "red", marginLeft: "10px" }} className='m-10'>
-                                            <CardMedia
-                                                component="img"
-                                                alt="green iguana"
-                                                height="140"
-                                                image="https://img.freepik.com/premium-photo/professional-landscaper-trimming-shrub-with-garden-scissors-background-blurred-copy-space-available_176841-18580.jpg?w=1380"
-                                            />
-                                            <CardContent>
-                                                <Typography gutterBottom variant="h5" component="div">
-                                                    First Solution
-                                                </Typography>
-                                                <Typography variant="body2" color="text.secondary">
-                                                    <div className='mt-4' dangerouslySetInnerHTML={{ __html: solution1 }} />
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Button color='success' size="small">Share</Button>
-                                                <Button color='success' size="small" onClick={() => getSolutionDetails(solution1)}>Learn More</Button>
-                                            </CardActions>
-                                        </Card>
-                                        <Card sx={{ maxWidth: 345, backgroundColor: "red", marginLeft: "10px" }} className='m-10'>
-                                            <CardMedia
-                                                component="img"
-                                                alt="green iguana"
-                                                height="140"
-                                                image="https://img.freepik.com/premium-photo/professional-landscaper-trimming-shrub-with-garden-scissors-background-blurred-copy-space-available_176841-18580.jpg?w=1380"
-                                            />
-                                            <CardContent>
-                                                <Typography gutterBottom variant="h5" component="div">
-                                                    Second Solution
-                                                </Typography>
-                                                <Typography variant="body2" color="text.secondary">
-                                                    <div className='mt-4' dangerouslySetInnerHTML={{ __html: solution2 }} />
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Button color='success' size="small">Share</Button>
-                                                <Button color='success' size="small" onClick={() => getSolutionDetails(solution2)}>Learn More</Button>
-                                            </CardActions>
-                                        </Card>
-                                        <Card sx={{ maxWidth: 345, backgroundColor: "red", marginLeft: "10px" }} className='m-10'>
-                                            <CardMedia
-                                                component="img"
-                                                alt="green iguana"
-                                                height="140"
-                                                image="https://img.freepik.com/premium-photo/professional-landscaper-trimming-shrub-with-garden-scissors-background-blurred-copy-space-available_176841-18580.jpg?w=1380"
-                                            />
-                                            <CardContent>
-                                                <Typography gutterBottom variant="h5" component="div">
-                                                    Third Solution
-                                                </Typography>
-                                                <Typography variant="body2" color="text.secondary">
-                                                    <div className='mt-4' dangerouslySetInnerHTML={{ __html: solution3 }} />
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Button color='success' size="small">Share</Button>
-                                                <Button color='success' size="small" onClick={() => getSolutionDetails(solution3)}>Learn More</Button>
-                                            </CardActions>
-                                        </Card>
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </Box>
-
-                    </Dialog>
-                </React.Fragment>
-                <React.Fragment>
-
-                    <Dialog
-                        fullScreen
-                        open={openBox2}
-                        onClose={handleClose2}
-                        TransitionComponent={Transition}
-                    >
-                        <AppBar sx={{ position: 'relative', height: '60px', backgroundColor: "green" }}>
-                            <Toolbar sx={{ position: "absolute", left: "10px" }}>
-                                <IconButton
-                                    edge="start"
-                                    color="inherit"
-                                    onClick={handleClose2}
-                                    aria-label="close"
-                                >
-                                    <CloseIcon />
-                                </IconButton>
-                                <Typography sx={{ marginLeft: "100px", marginTop: "10px", fontSize: "25px" }}>Pest Controll Solutions</Typography>
-
-
-                            </Toolbar>
-                        </AppBar>
-                        <Box>
-
-                            <div className='h-96 rounded-2xl'>
-                                <img className=' m-auto rounded-2xl' src="./images/logo2.png" alt="" />
-                                <div className='  w-1/2 m-auto mt-4'>
-                                    <h2 className='text-center max-sm:text-xl text-3xl font-bold text-zinc-600'>See Environment health solutions</h2>
-                                    <p className='text-center max-sm:text-sm'>Environmentally healthy pest solutions offer eco-conscious methods to manage infestations without harming ecosystems. By utilizing natural deterrents and sustainable practices, these solutions prioritize the health of both the environment and inhabitants.</p>
-                                    <h2 className='text-center text-xl text-green-600 font-bold'>Solutions for {pest}</h2>
-                                    <div className='left-0 flex max-sm:flex-wrap w-full absolute m-auto'>
-                                        <div style={{ width: "1000px" }} className='mt-5 w-96 shadow-2xl px-10 m-auto py-5' dangerouslySetInnerHTML={{ __html: solutionDis }} />
-
-
-
-                                    </div>
-                                </div>
-
-                            </div>
-                        </Box>
-
-                    </Dialog>
-                </React.Fragment>
 
             </div >
 
