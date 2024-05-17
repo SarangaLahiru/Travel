@@ -10,9 +10,11 @@ import bcrypt
 from vonage import Client, Sms
 from translate import translations
 from datetime import datetime
+from gemini import Solution
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+solution=Solution()
 
 
 # client = Client(key="5e68450e", secret="CX3mEEXHz1cIzQZn")
@@ -149,6 +151,19 @@ def detection():
     
     response=requests.get(f"https://api.qrserver.com/v1/read-qr-code/?fileurl={image_file}")
     
+    return jsonify({'response': response})
+
+@app.route('/api/get_location', methods=['POST'])
+def get_location():
+    user_data = request.json
+    
+    required_fields = ['location']
+    for field in required_fields:
+        if field not in user_data:
+            return jsonify({'error': f'Missing required field: {field}'}), 400
+    
+    response=solution.geminiResponse(location=user_data['location'])
+            
     return jsonify({'response': response})
 
 if __name__ == '__main__':
