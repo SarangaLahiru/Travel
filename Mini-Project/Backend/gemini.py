@@ -8,7 +8,7 @@ load_dotenv(".env")
 
 class Solution(object):
     def __init__(self) -> None:
-        genai.configure(api_key=os.getenv['GOOGLE_API_KEY'])
+        genai.configure(api_key="AIzaSyBUd99N6xQQmy-233yhwEJnLXH_4oNRJzE")
         
         generation_config={
                         'temperature':0.01, 
@@ -38,7 +38,7 @@ class Solution(object):
             },
         ]
         
-        self._model = genai.GenerativeModel('gemini-pro-vision')
+        self._model = genai.GenerativeModel('gemini-pro')
         
         self._prompt= "Make a some description about {location}"
         self._template = PromptTemplate(input_variables=['location'], 
@@ -48,7 +48,7 @@ class Solution(object):
         
     def geminiResponse(self, location) -> str:
         try:
-            self._response=self._model.generate_content([self._template.format(location=location)], stream=False)
+            self._response=self._model.generate_content([self._template.format(location=location)], stream=True)
                 
             for chunk in self._response:
                 self._response_ = ''.join(chunk.text) 
